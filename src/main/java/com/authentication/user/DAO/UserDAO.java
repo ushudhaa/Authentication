@@ -61,7 +61,7 @@ public class UserDAO {
         }
         return null;
     }catch (Exception e) {
-        System.out.println("Error while searcghing user");
+        System.out.println("Error while searching user");
         return null;
     }
     }

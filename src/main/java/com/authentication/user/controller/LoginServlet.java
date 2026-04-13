@@ -2,11 +2,10 @@ package com.authentication.user.controller;
 
 import com.authentication.user.DAO.UserDAO;
 import com.authentication.user.model.UserModel;
+import com.authentication.utils.SessionUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
@@ -32,12 +31,24 @@ public class LoginServlet extends HttpServlet {
             req.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(req, resp);
         }
         if (BCrypt.checkpw(password, user.getPassword())) {
+
+
+            HttpSession session = req.getSession();
+            session.setAttribute("user", user);
+
+            Cookie cookie = new Cookie("email", user.getEmail());
+            resp.addCookie(cookie);
+
             resp.sendRedirect(req.getContextPath() + "/");
+
         } else {
             req.setAttribute("error", "Invalid  credentials");
             req.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(req, resp);
         }
-            req.setAttribute("user", user);
-            resp.sendRedirect(req.getContextPath() + "/");
-        }
+        SessionUtil.setUserSession(req,user);
+
+        CookieUtil.adduserCookie(resp,user,getEmail());
+
+        resp.sendRedirect(req.getContextPath());
     }
+}
