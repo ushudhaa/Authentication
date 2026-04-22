@@ -1,23 +1,49 @@
 <%--
   Created by IntelliJ IDEA.
-  User: USER
-  Date: 3/20/2026
-  Time: 3:17 PM
+  User: Ushudha
+  Date: 4/20/2026
+  Time: 02:37 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>All Topics</title>
 </head>
 <body>
-    This is login page, welcome to my login page.
-    <form method="post" action="login">
-        <label>Email</label>
-        <input name="email"/>
-        <label>Password</label>
-        <input name="password"/>
-        <button type="submit">Login</button>
-    </form>
+<div>
+    <a href="add-topic">Add Topic</a>
+</div>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Topic Name</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Programming</td>
+            <td>2025</td>
+            <td>2026</td>
+            <td>
+                <button>Update</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Logic</td>
+            <td>2025</td>
+            <td>2026</td>
+            <td>
+                <button>Update</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

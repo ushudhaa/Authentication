@@ -36,5 +36,11 @@
         <h1>please log in first</h1>
     </c:otherwise>
 </c:choose>
+
+<form method="post" action="add-topic">
+    <label>Topic Name</label>
+    <input name="topic_name"/>
+    <button type="submit">Add Topic</button>
+</form>
 </body>
 </html>

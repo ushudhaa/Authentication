@@ -2,6 +2,7 @@ package com.authentication.user.controller;
 
 import com.authentication.user.DAO.UserDAO;
 import com.authentication.user.model.UserModel;
+import com.authentication.utils.CookieUtil;
 import com.authentication.utils.SessionUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -47,7 +48,7 @@ public class LoginServlet extends HttpServlet {
         }
         SessionUtil.setUserSession(req,user);
 
-        CookieUtil.adduserCookie(resp,user,getEmail());
+        CookieUtil.addUserCookie(resp,user.getEmail());
 
         resp.sendRedirect(req.getContextPath());
     }

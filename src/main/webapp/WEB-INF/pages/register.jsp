@@ -6,23 +6,19 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-    <title>Register</title>
+    <title>Add Topic</title>
 </head>
-<% String errormsg=(String)request.getAttribute("error");%>
 <body>
-<form method="post" action="register">
-    <label>name</label>
-    <input name="name"/>
-    <label>Email</label>
-    <input name="email"/>
-    <label>Password</label>
-    <input name="password"/>
-    <button type="submit">Register</button>
-    </form>
-    <label>
-        <%=errormsg%>
-    </label>
+<form method="post" action="add-topic">
+    <label>Topic Name</label>
+    <input name="topic_name"/>
+    <button type="submit">Add Topic</button>
+    <c:if test="${not empty error}">
+        <label>${error}</label>
+    </c:if>
+</form>
 </body>
 </html>
